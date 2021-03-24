@@ -10,7 +10,17 @@ class EmployeesController < ApplicationController
 
   def index
     @employees = Employee.all
-  end 
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @employees.to_csv }
+    end
+  end
+
+  def import
+    Employee.import(params[:file])
+    redirect_to employees_path, notice: 'data was just imported!'
+  end
 
   def show
     @employee = Employee.find(params[:id])
