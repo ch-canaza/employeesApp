@@ -1,0 +1,22 @@
+<h1>Employees</h1>
+
+<br>
+<% @employees.each do |employee| %>
+<b>-------------------------------------</b>
+  <p class="fs-7">
+  <strong>
+      Role:
+  </strong>
+  <%= employee.class %>
+  </p>
+  <p class="fs-2">
+  <strong>
+      Name:
+  </strong>
+  <%= employee.full_name %>
+  </p>
+
+  <%= link_to 'Edit', new_employee_path(@employee), class:"btn btn-primary" %> 
+  <%= link_to 'Back', new_employee_path, class:"btn btn-danger" %>
+ <p>------------------</p>
+<% end %>

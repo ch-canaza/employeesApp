@@ -1,0 +1,63 @@
+<%= form_with(model: employee) do |form| %>
+  <% if employee.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(employee.errors.count, "error") %> 
+          prohibited this employee from being saved:
+      </h2>
+
+      <ul>
+        <% employee.errors.each do |error| %>
+          <li>
+            <%= error.full_message %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group" >
+    <%= form.label :full_name, 'Nombres' %>
+    <%= form.text_field :full_name, class:"form-control form-control-sm" %>
+  </div>
+
+  <div class="field form-label">
+    <%= form.label :last_names, 'Apellidos' %>
+    <%= form.text_field :last_names, class:"form-control form-control-sm" %>
+  </div>
+  
+  <div class="field form-label">
+    <%= form.label :phone_number, 'Nùmero De Telèfono' %>
+    <%= form.text_field :phone_number, class:"form-control form-control-sm" %>
+  </div>
+  
+  <div class="field form-label">
+    <%= form.label :email %>
+    <%= form.text_field :email, class:"form-control form-control-sm" %>
+  </div>
+
+  <div class="field form-label">
+    <%= form.label :position, 'Cargo' %>
+    <%= form.text_field :position, class:"form-control form-control-sm" %>
+  </div>
+  <div class="field form-label">
+    <%= form.label :salary, 'Salario' %>
+    <%= form.text_field :salary, class:"form-control form-control-sm" %>
+  </div>
+
+  <div class="field form-label">
+    <%= form.label :department, 'Departamento' %>
+    <%= form.select :department, ['Contabilidad', 
+                                  'Finanzas', 
+                                  'Operaciones', 
+                                  'Seguridad', 
+                                  'Recursos Humanos'], 
+                                  selected: 'Operaciones', 
+                                  class:"form-control form-control-lg" %>
+  </div>
+
+  <div class="actions form-label">
+    <%= form.submit class:"btn btn-primary"%>
+  </div>
+
+<% end %>
