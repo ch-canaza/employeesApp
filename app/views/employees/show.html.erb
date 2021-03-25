@@ -1,11 +1,46 @@
 <h1>Employee</h1>
 <div>
-  <p><b>Nombres: </b> <%= @employee.full_name %></p>
-  <p><b>Apellidos: </b> <%= @employee.last_names %></p>
-  <p><b> Email: </b> <%= @employee.email %></p>
-  <p><b> Telefono: </b><%= @phone_number %>
-  <p><b> Salario: </b><%= @salary %>
-  <p><b> Cargo: </b> <%= @employee.position %></p>
-  <p><b> Departamento: </b> <%= @employee.department %></p>
+  <p>
+    <b>
+      Nombres: 
+    </b> 
+    <%= @employee.full_name %>
+  </p>
+  <p>
+    <b>
+      Apellidos: 
+    </b> 
+    <%= @employee.last_names %>
+  </p>
+  <p>
+    <b>
+      Email: 
+    </b> 
+    <%= @employee.email %>
+  </p>
+  <p>
+    <b> 
+      Telefono: 
+    </b>
+    <%= @phone_number %>
+  </p>
+  <p>
+    <b> 
+      Salario: 
+    </b>
+    <%= @salary %>
+  </p>
+  <p>
+    <b> 
+      Cargo: 
+    </b> 
+    <%= @employee.position %>
+  </p>
+  <p>
+    <b>
+      Departamento: 
+    </b> 
+    <%= @employee.department %>
+  </p>
 </div>
 <%= link_to 'Back', new_employee_path, class:"btn btn-danger" %>
