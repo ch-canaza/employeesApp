@@ -22,10 +22,12 @@ class Employee < ApplicationRecord
                   length: { maximum: 25 }
 
   def self.import(file)
-    # loop through csv file
-    CSV.foreach(file.path, headers: true) do |row|
-      # creates an user for each row in the file
-      Employee.create! row.to_hash
+    if file
+      # loop through csv file
+      CSV.foreach(file.path, headers: true) do |row|
+        # creates an user for each row in the file
+        Employee.create! row.to_hash
+      end
     end
   end
 

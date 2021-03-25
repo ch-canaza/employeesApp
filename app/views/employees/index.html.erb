@@ -1,5 +1,15 @@
 <h1>Employees</h1>
-  <%= link_to 'download', employees_path + '.csv', class:"btn btn-outline-secondary" %>
+  <div class="container">
+    <h3> Download data from Data Base</h3>
+    <%= link_to 'download', employees_path + '.csv', class:"btn btn-outline-secondary" %>
+    <br>
+    <h3> Import data from your pc</h3>
+    <%= form_tag import_employees_path, multipart: true do %>
+      <%= file_field_tag :file %>
+      <%= submit_tag 'import CSV' %>
+    <%end%> 
+  </div>
+  <br>
 
 <br>
 <% @employees.each do |employee| %>
@@ -12,21 +22,36 @@
   </p>
   <p class="fs-2">
   <strong>
-      Name:
+      Nombres:
   </strong>
-  <%= employee.full_name %>
+    <p><%= employee.full_name %></p>
+  <strong>
+      Apellidos:
+  </strong>
+    <p><%= employee.last_names %></p>
+  <strong>
+      Email:
+  </strong>
+    <p><%= employee.email %></p>
+  <strong>
+      Cargo:
+  </strong>
+    <p><%= employee.position %></p>
+  <strong>
+      Departamento:
+  </strong>
+    <p><%= employee.department %></p>
+  <strong>
+      Salario:
+  </strong>
+    <p><%= @salary %></p>
+  <strong>
+    Nùmero De Telèfono:
+  </strong>
+    <p><%= @phone_number %></p>
   </p>
 
-  <%= link_to 'Edit', new_employee_path(@employee), class:"btn btn-primary" %> 
-  <%= link_to 'Back', new_employee_path, class:"btn btn-danger" %>
  <p>------   ------</p>
 <% end %>
 
-<div class="container">
-    <h3> Import data from your pc</h3>
-    <%= form_tag import_employees_path, multipart: true do %>
-      <%= file_field_tag :file %>
-      <%= submit_tag 'import CSV' %>
-    <%end%> 
-  </div>
-  <br>
+<%= link_to 'Back', new_employee_path, class:"btn btn-danger" %>
