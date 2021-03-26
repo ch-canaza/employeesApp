@@ -1,57 +1,59 @@
 <h1>Employees</h1>
-  <div class="container">
-    <h3> Download data from Data Base</h3>
-    <%= link_to 'download', employees_path + '.csv', class:"btn btn-outline-secondary" %>
-    <br>
-    <h3> Import data from your pc</h3>
+  
+
+<div class="container">
+  <h3> Download data from Data Base</h3>
+  <%= link_to 'download', employees_path + '.csv', class:"btn btn-outline-secondary" %>
+  <br>
+  <h3> Import data from your pc</h3>
     <%= form_tag import_employees_path, multipart: true do %>
+      
       <%= file_field_tag :file %>
       <%= submit_tag 'import CSV' %>
-    <%end%> 
-  </div>
-  <br>
+    <% end %>
+</div>
+<br>
 
 <br>
 <% @employees.each do |employee| %>
 <b>-------------------------------------</b>
   <p class="fs-7">
-  <strong>
+    <strong>
       Role:
-  </strong>
+    </strong>
   <%= employee.class %>
   </p>
   <p class="fs-2">
-  <strong>
+    <strong>
       Nombres:
-  </strong>
+    </strong>
     <p><%= employee.full_name %></p>
-  <strong>
+    <strong>
       Apellidos:
-  </strong>
+    </strong>
     <p><%= employee.last_names %></p>
-  <strong>
+    <strong>
       Email:
-  </strong>
+    </strong>
     <p><%= employee.email %></p>
-  <strong>
+    <strong>
       Cargo:
-  </strong>
+    </strong>
     <p><%= employee.position %></p>
-  <strong>
+    <strong>
       Departamento:
-  </strong>
+    </strong>
     <p><%= employee.department %></p>
-  <strong>
+    <strong>
       Salario:
-  </strong>
+    </strong>
     <p><%= @salary %></p>
-  <strong>
-    Nùmero De Telèfono:
-  </strong>
+    <strong>
+      Nùmero De Telèfono:
+    </strong>
     <p><%= @phone_number %></p>
   </p>
 
  <p>------   ------</p>
 <% end %>
-
 <%= link_to 'Back', new_employee_path, class:"btn btn-danger" %>

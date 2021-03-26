@@ -7,9 +7,10 @@ class Employee < ApplicationRecord
 
   validates :email,
             presence: true,
-            uniqueness: { case_sensitive: false },
+            uniqueness: { scope: :full_name, message: 'already exists in the database' },
             length: { minimum: 3, maximum: 35 },
             format: { with: VALID_EMAIL_REGEX }
+
   validates :full_name,
             presence: true,
             length: { minimum: 3, maximum: 25 }
@@ -18,10 +19,10 @@ class Employee < ApplicationRecord
             length: { minimum: 3, maximum: 25 }
   validates :phone_number,
             presence: true,
-            uniqueness: true,
+            uniqueness: { scope: :id, message: 'already exists in the database'},
             length: { is: 11 },
             format: { with: VALID_PHONE_NUMBER }
-  validates :position, 
+  validates :position,
             presence: true,
             length: { maximum: 25 }
   validates :salary,

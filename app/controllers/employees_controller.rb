@@ -25,7 +25,6 @@ class EmployeesController < ApplicationController
   def show; end
 
   def create
-    @employee = Employee.new(employee_params)
     respond_to do |format|
       if @employee.save
         format.html { redirect_to @employee, notice: 'employee was successfully added to the list.' }
@@ -39,8 +38,10 @@ class EmployeesController < ApplicationController
     if Employee.import(params[:file])
       redirect_to employees_path, notice: 'data was just imported!'
     else
-      redirect_to employees_path, alert: 'Sorry, No file chosen, Action can not be performed' 
+      redirect_to employees_path, alert: 'Sorry, No file chosen, Action can not be performed'
     end
+  rescue ActiveRecord::RecordInvalid => e
+    redirect_to employees_path, alert: "#{e.message}, it seems your file has duplicated records"
   end
 
   private
